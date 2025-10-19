@@ -22,7 +22,7 @@ Nếu không có "bin" và "obj" thì bật VS chạy code 1 lần thì sẽ xu�
 
 3. Import database:
    - Mở **SQL Server Management Studio (SSMS)**.
-   - Chạy file `Database/InitDatabase.sql` (có trong repo) để tạo database và dữ liệu mẫu.
+   - Chạy file `InitDatabase.sql` (có trong repo) để tạo database và dữ liệu mẫu.
 
 4. Chạy project:
    - Mở Visual Studio.
