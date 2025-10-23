@@ -9,8 +9,14 @@
 <h4 class="bg-danger"> Bạn có chắc chắn muốn xóa danh mục này không?</h4>
 
 @Html.Partial("PartialView_DetailDelete", Model)
-<dt style="padding:10px;"></dt>
-<dd style="padding:10px;">
-    @Html.ActionLink("Xóa", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Hủy", "Index", null, new { @class = "btn btn-primary" })
-</dd>
+
+@using (Html.BeginForm("Delete", "Products", FormMethod.Post))
+{ 
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ProductID)
+    <dt style="padding:10px;"></dt>
+    <dd style="padding:10px;">
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        @Html.ActionLink("Hủy", "Index", null, new { @class = "btn btn-primary" })
+    </dd>
+}
