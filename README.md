@@ -7,6 +7,8 @@ B3: Nếu khi bật file.cshtml lên mà bị Error thì bật Solution Explorer
 B4: Nếu vẫn bị lỗi thì có thể thử tắt VS rồi xóa "bin" và "obj" trong folder rồi bật code lại
 Nếu không có "bin" và "obj" thì bật VS chạy code 1 lần thì sẽ xuất hiện. Tắt VS xóa "bin" và "obj" rồi bật lại VS sẽ có thể chạy code bình thường
 
+Nếu không thấy Folder Categories hoặc Products thì có thể chỉnh branches từ "master" thành "BE3" hoặc "BE4" 
+
 
 ## 🔧 Cấu hình Database
 
