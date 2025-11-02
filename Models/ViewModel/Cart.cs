@@ -9,6 +9,17 @@ namespace _24DH110165_MyStore.Models.ViewModel
     {
         private List<CartItem> items = new List<CartItem>();
         public IEnumerable<CartItem> Items => items;
+        
+        //Danh sách sản phẩm trong giỏ hàng được nhóm theo Category
+        public List<IGrouping<string, CartItem>> GroupedItems => items.GroupBy(i => i.Category).ToList();
+        
+        //Thuộc tính hỗ trợ phân trang
+        public int PageNumber { get; set; } //Trang hiện tại
+        public int PageSize { get; set; } = 6; //Số sản phẩm mỗi trang
+        
+        //Danh sách các sản phẩm cùng danh mục với các sản phẩm trong giỏ hàng
+        public PagedList.IPagedList<Product> SimilarProducts { get; set; }
+
         //Thêm sản phẩm vào giỏ
         public void AddItem(int productID, string productImage, string productName,
             decimal unitPrice, int quantity, string category)
