@@ -12,7 +12,9 @@
             {
                 <li class="lproduct-item">
                     <div>
-                        <a href="@Url.Action("ProductDetails","Home",new {id = product.ProductID})"></a>
+                        <a href="@Url.Action("ProductDetails","Home",new {id = product.ProductID})">
+                            <img style="width:100%;height:auto;" src="@Model.product.ProductImage" />  
+                        </a>
                     </div>
                     <div>
                         <h5>@Html.DisplayFor(modelItem => product.ProductName) </h5>
