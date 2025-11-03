@@ -12,7 +12,7 @@ namespace _24DH110165_MyStore.Models.ViewModel
         public Product product { get; set; }
         public int quantity { get; set; } = 1;
         //tính giá trị tạm thời
-        public decimal estimatedValue { get; set; } // =quantity * product.ProductPrice
+        public decimal estimatedValue => quantity * product.ProductPrice; //{ get; set; } // =quantity * product.ProductPrice
 
         //các thuộc tính hỗ trợ phân trang
         public int PageNumber { get; set; } // trang hiện tại
