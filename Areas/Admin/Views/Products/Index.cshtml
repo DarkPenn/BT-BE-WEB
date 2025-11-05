@@ -21,7 +21,7 @@
     <!--Form Tìm Kiếm-->
     @using (Html.BeginForm("Index", "Products", FormMethod.Get))
     {
-        <div class="form-group search-container">
+        <div class="mb-3 search-container">
             <!-- Text Box tìm theo tên, loại-->
             @Html.TextBoxFor(m => m.SearchTerm, new
             {
@@ -44,7 +44,7 @@
             <button type="submit" class="btn btn-primary">Tìm kiếm</button>
         </div>
         //Tùy chọn sắp xếp
-        <div class="form-group order-container">
+        <div class="mb-3 order-container">
             Sắp xếp theo:
             @Html.ActionLink("Tên tăng dần", "Index", new { SortOrder = "name_asc", SearchTerm = Model.SearchTerm })
             |
