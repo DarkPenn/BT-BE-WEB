@@ -54,26 +54,6 @@ namespace _24DH110165_MyStore.Controllers
                 db.Customers.Add(customer);
                 //lưu thông tin tài khoản và thông tin khách hàng vào CSDL
                 db.SaveChanges();
-                //try
-                //{
-                //    db.Customers.Add(customer);
-                //    db.SaveChanges();
-                //}
-                //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                //{
-                //    foreach (var eve in ex.EntityValidationErrors)
-                //    {
-                //        System.Diagnostics.Debug.WriteLine("Entity: {0}, State: {1}",
-                //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                //        foreach (var ve in eve.ValidationErrors)
-                //        {
-                //            System.Diagnostics.Debug.WriteLine("- Property: {0}, Error: {1}",
-                //                ve.PropertyName, ve.ErrorMessage);
-                //        }
-                //    }
-                //    throw;
-                //}
-
 
                 return RedirectToAction("Index","Home");
             }
