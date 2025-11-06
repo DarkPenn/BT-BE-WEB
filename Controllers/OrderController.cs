@@ -21,12 +21,7 @@ namespace _24DH110165_MyStore.Controllers
         // GET: Order/Checkout
         [Authorize]
         public ActionResult Checkout()
-        {
-            System.Diagnostics.Debug.WriteLine(">>> Checkout GET: " + DateTime.Now);
-            System.Diagnostics.Debug.WriteLine(">>> User authenticated: " + User.Identity.IsAuthenticated);
-            System.Diagnostics.Debug.WriteLine(">>> Session Cart type: " + (Session["Cart"]?.GetType().ToString() ?? "null"));
-            System.Diagnostics.Debug.WriteLine(">>> Session Cart null? " + (Session["Cart"] == null));
-
+        {            
             //Kiểm tra giỏ hàng trong session
             //Nếu giỏ hàng rỗng hoặc không có sản phẩm thì chuyển hướng về home
             var cart = Session["Cart"] as Cart;
