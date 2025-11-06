@@ -51,28 +51,28 @@ namespace _24DH110165_MyStore.Controllers
                     CustomerAddress = model.CustomerAddress,
                     Username = model.Username,
                 };
-                //db.Customers.Add(customer);
-                ////lưu thông tin tài khoản và thông tin khách hàng vào CSDL
-                //db.SaveChanges();
-                try
-                {
-                    db.Customers.Add(customer);
-                    db.SaveChanges();
-                }
-                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-                {
-                    foreach (var eve in ex.EntityValidationErrors)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Entity: {0}, State: {1}",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            System.Diagnostics.Debug.WriteLine("- Property: {0}, Error: {1}",
-                                ve.PropertyName, ve.ErrorMessage);
-                        }
-                    }
-                    throw;
-                }
+                db.Customers.Add(customer);
+                //lưu thông tin tài khoản và thông tin khách hàng vào CSDL
+                db.SaveChanges();
+                //try
+                //{
+                //    db.Customers.Add(customer);
+                //    db.SaveChanges();
+                //}
+                //catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                //{
+                //    foreach (var eve in ex.EntityValidationErrors)
+                //    {
+                //        System.Diagnostics.Debug.WriteLine("Entity: {0}, State: {1}",
+                //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                //        foreach (var ve in eve.ValidationErrors)
+                //        {
+                //            System.Diagnostics.Debug.WriteLine("- Property: {0}, Error: {1}",
+                //                ve.PropertyName, ve.ErrorMessage);
+                //        }
+                //    }
+                //    throw;
+                //}
 
 
                 return RedirectToAction("Index","Home");
@@ -105,6 +105,39 @@ namespace _24DH110165_MyStore.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 else { ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng."); }
+            }
+            return View(model);
+        }
+
+        //GET: Account/LogOut
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Account");
+        }
+
+        //GET: Account/ChangePassword
+        public ActionResult ChangePassword()
+        {
+             return View(); 
+        }
+        //POST: Accout/ChangePassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult ChangePassword(RegisterVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = db.Users.SingleOrDefault(u => u.Username == User.Identity.Name);
+                if (user == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                user.Password = model.Password;//nên mã hóa trước khi lưu
+                db.SaveChanges();
+
+                return RedirectToAction("ProfileInfo");
             }
             return View(model);
         }
